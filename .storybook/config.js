@@ -4,7 +4,7 @@ import { withOptions } from '@storybook/addon-options';
 import { withKnobs } from '@storybook/addon-knobs';
 
 withOptions({
-  name: "React Component Template",
+  name: "React Formatted Input",
   addonPanelInRight: true,
   hierarchySeparator: /\//,
   hierarchyRootSeparator: /\|/,

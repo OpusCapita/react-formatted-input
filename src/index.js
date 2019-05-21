@@ -1,3 +1,4 @@
-import Example from './example.component';
+import FormattedInput from './formatted-input.component';
 
-export default Example;
+export FormattedInputCurrency from './formatted-input-currency.component';
+export default FormattedInput;
