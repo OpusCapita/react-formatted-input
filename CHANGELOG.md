@@ -4,6 +4,7 @@
 
 ## <next>
 * Storybook 5 support for component
+* `FormattedInput` and `FormattedInputCurrency` components
 
 ## 1.0.0
 * Initial release

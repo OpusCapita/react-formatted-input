@@ -1,11 +1,11 @@
 {
   "author": "OpusCapita (www.opuscapita.com)",
-  "name": "@opuscapita/react-component-template",
+  "name": "@opuscapita/react-formatted-input",
   "version": "1.0.0",
   "private": false,
   "license": "MIT",
-  "description": "OpusCapita - React component template",
-  "main": "lib/umd/react-component-template.js",
+  "description": "OpusCapita - React Formatted Input",
+  "main": "lib/umd/react-formatted-input.js",
   "cjs": "lib/cjs/index.js",
   "es": "lib/es/index.js",
   "scripts": {
@@ -27,7 +27,8 @@
     "version": "npm run build && git add -A lib docs",
     "postversion": "git push && git push --tags",
     "storybook:hot": "start-storybook -p 6060",
-    "storybook:build": "build-storybook"
+    "storybook:build": "build-storybook",
+    "build-storybook": "build-storybook -c .storybook"
   },
   "files": [
     "/lib/"
@@ -53,7 +54,6 @@
     "@babel/preset-env": "7.3.4",
     "@babel/preset-react": "7.0.0",
     "@babel/register": "7.0.0",
-    "@opuscapita/oc-cm-common-styles": "3.0.0",
     "@storybook/addon-knobs": "5.0.1",
     "@storybook/addon-options": "5.0.1",
     "@storybook/react": "5.0.1",
@@ -112,9 +112,11 @@
     "webpack-notifier": "1.7.0",
     "write-file-webpack-plugin": "4.5.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@opuscapita/format-utils": "2.1.0"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/OpusCapita/react-component-template.git"
+    "url": "https://github.com/OpusCapita/react-formatted-input.git"
   }
 }

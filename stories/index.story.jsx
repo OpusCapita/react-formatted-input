@@ -1,10 +1,9 @@
-import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { text } from '@storybook/addon-knobs';
-// Example component import
-import Example from '../src/example.component';
+import FormattedInputCurrencyStory from './formatted-input-currency.story';
+import FormattedInputStory from './formatted-input.story';
 
-const stories = storiesOf('ReactComponentTemplate', module);
-
+const stories = storiesOf('ReactFormattedInput', module);
 // add simple story with knobs (component props)
-stories.add('Example', () => <Example example={text('Greeting text', 'Helou')} />);
+stories
+  .add('FormattedInput', FormattedInputStory)
+  .add('FormattedInputCurrency', FormattedInputCurrencyStory)
