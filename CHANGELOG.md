@@ -3,6 +3,8 @@
 * In general follow (https://docs.npmjs.com/getting-started/semantic-versioning) versioning.
 
 ## <next>
+
+## 1.1.0
 * Storybook 5 support for component
 * `FormattedInput` and `FormattedInputCurrency` components
 

@@ -28,7 +28,8 @@
     "postversion": "git push && git push --tags",
     "storybook:hot": "start-storybook -p 6060",
     "storybook:build": "build-storybook",
-    "build-storybook": "build-storybook -c .storybook"
+    "build-storybook": "build-storybook -c .storybook",
+    "deploy-storybook": "storybook-to-ghpages"
   },
   "files": [
     "/lib/"
@@ -57,6 +58,7 @@
     "@storybook/addon-knobs": "5.0.1",
     "@storybook/addon-options": "5.0.1",
     "@storybook/react": "5.0.1",
+    "@storybook/storybook-deployer": "2.8.1",
     "autoprefixer": "9.4.10",
     "babel-eslint": "10.0.1",
     "babel-loader": "8.0.5",
