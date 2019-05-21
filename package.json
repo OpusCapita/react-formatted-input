@@ -26,7 +26,6 @@
     "postversion": "git push && git push --tags",
     "storybook:hot": "start-storybook -p 6060",
     "storybook:build": "build-storybook",
-    "build-storybook": "build-storybook -c .storybook",
     "deploy-storybook": "storybook-to-ghpages"
   },
   "files": [
