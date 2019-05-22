@@ -71,7 +71,6 @@ class FormattedInput extends React.PureComponent {
 
   render() {
     const { inputProps, className } = this.props;
-    console.log(inputProps);
     return (
       <input
         {...inputProps}
