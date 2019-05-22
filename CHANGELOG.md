@@ -3,6 +3,7 @@
 * In general follow (https://docs.npmjs.com/getting-started/semantic-versioning) versioning.
 
 ## <next>
+* Bumped `@opuscapita/format-utils` version number to 2.1.1
 
 ## 1.1.0
 * Storybook 5 support for component
