@@ -3,6 +3,8 @@
 * In general follow (https://docs.npmjs.com/getting-started/semantic-versioning) versioning.
 
 ## <next>
+
+## 1.1.1
 * Bumped `@opuscapita/format-utils` version number to 2.1.1
 
 ## 1.1.0
