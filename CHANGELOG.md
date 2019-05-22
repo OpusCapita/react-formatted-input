@@ -4,8 +4,11 @@
 
 ## <next>
 
+## 1.1.3
+* Further tweaks to `FormattedInputCurrency` formatter function
+
 ## 1.1.2
-* Minor fixes in `FormattedInputCurrency`
+* Minor fixes to `FormattedInputCurrency`
 
 ## 1.1.1
 * Bumped `@opuscapita/format-utils` version number to 2.1.1

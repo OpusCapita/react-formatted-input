@@ -36,7 +36,7 @@ class FormattedInputCurrency extends React.PureComponent {
       currency, decimals, thousandSeparator, decimalSeparator,
     } = this.props;
 
-    if (val === undefined || val === null) return '';
+    if (val === undefined || val === null || val === '') return '';
 
     return formatCurrencyAmount(val, {
       currency, decimals, thousandSeparator, decimalSeparator,
