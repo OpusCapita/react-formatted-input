@@ -18,7 +18,11 @@ const FormattedInputCurrencyStory = () => {
     decimalSeparator: text('Decimal separator', '.'),
   };
 
-  return (<FormattedInputCurrency {...knobs} onChange={onChange} />);
+  const inputProps = {
+    name: 'currencyInput',
+  };
+
+  return (<FormattedInputCurrency {...knobs} onChange={onChange} inputProps={inputProps} />);
 };
 
 export default FormattedInputCurrencyStory;

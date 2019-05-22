@@ -23,7 +23,7 @@ class FormattedInputCurrency extends React.PureComponent {
     decimalSeparator: '.',
     value: '',
     inputProps: undefined,
-    className: undefined,
+    className: '',
   };
 
   /**
@@ -35,6 +35,8 @@ class FormattedInputCurrency extends React.PureComponent {
     const {
       currency, decimals, thousandSeparator, decimalSeparator,
     } = this.props;
+
+    if (val === undefined || val === null) return '';
 
     return formatCurrencyAmount(val, {
       currency, decimals, thousandSeparator, decimalSeparator,
@@ -51,7 +53,7 @@ class FormattedInputCurrency extends React.PureComponent {
         formatter={this.formatter}
         className={className}
         value={value}
-        {...inputProps}
+        inputProps={inputProps}
       />
     );
   }

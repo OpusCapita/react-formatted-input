@@ -11,7 +11,7 @@ class FormattedInput extends React.PureComponent {
     formatter: PropTypes.func,
     onChange: PropTypes.func.isRequired,
     inputProps: PropTypes.shape({}),
-    value: PropTypes.oneOfType(PropTypes.string, PropTypes.number),
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     className: PropTypes.string,
   };
 
@@ -19,7 +19,7 @@ class FormattedInput extends React.PureComponent {
     formatter: val => val,
     inputProps: {},
     value: '',
-    className: undefined,
+    className: '',
   };
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -71,6 +71,7 @@ class FormattedInput extends React.PureComponent {
 
   render() {
     const { inputProps, className } = this.props;
+    console.log(inputProps);
     return (
       <input
         {...inputProps}
