@@ -112,7 +112,7 @@
     "write-file-webpack-plugin": "4.5.0"
   },
   "dependencies": {
-    "@opuscapita/format-utils": "2.1.1"
+    "@opuscapita/format-utils": "2.1.2"
   },
   "repository": {
     "type": "git",
