@@ -40,9 +40,8 @@ class FormattedInputCurrency extends React.PureComponent {
 
     if (val === undefined || val === null || val === '') return '';
 
-    return formatCurrencyAmount(val, {
-      currency, decimals, thousandSeparator, decimalSeparator,
-    });
+    const value = formatCurrencyAmount(val, { currency, decimals, thousandSeparator, decimalSeparator });
+    return Number.isNaN(value) ? val : value;
   };
 
   editFormatter = (val) => {
@@ -50,9 +49,20 @@ class FormattedInputCurrency extends React.PureComponent {
 
     if (val === undefined || val === null || val === '') return '';
 
-    return val.includes(decimalSeparator) || Number.isNaN(Number(val))
-      ? val
-      : formatCurrencyAmount(val, { decimals: 0, thousandSeparator, decimalSeparator });
+    const decimalSeparatorIndex = val.lastIndexOf(decimalSeparator);
+    const decimals = decimalSeparatorIndex > -1
+      ? val.length - decimalSeparatorIndex - 1
+      : 0;
+
+    const value = formatCurrencyAmount(val, { decimals, thousandSeparator, decimalSeparator });
+    // for example - or +
+    if (value === 'NaN') {
+      return val;
+    }
+
+    if (decimalSeparatorIndex > -1 && decimals === 0) return `${value}${decimalSeparator}`;
+
+    return value;
   }
 
   render() {
