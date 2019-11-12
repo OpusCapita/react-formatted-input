@@ -49,14 +49,15 @@ class FormattedInput extends React.PureComponent {
    * @param e
    */
   onBlur = (e) => {
-    const { formatter, onBlur, onChange } = this.props;
-    const { target: { value } } = e;
+    const { formatter, onBlur } = this.props;
+    const { target: { value: val } } = e;
 
-    this.setState({ value: formatter(value) }, () => {
-      // onChange(formatter(value));
+    const value = formatter(val);
+
+    this.setState({ value }, () => {
       userTyping = false;
+      onBlur(value);
     });
-    onBlur(e);
   };
 
   /**
