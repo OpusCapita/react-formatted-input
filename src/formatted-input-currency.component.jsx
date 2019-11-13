@@ -15,6 +15,7 @@ class FormattedInputCurrency extends React.PureComponent {
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     inputProps: PropTypes.shape({}),
     className: PropTypes.string,
+    onBlur: PropTypes.func,
   };
 
   static defaultProps = {
@@ -24,6 +25,7 @@ class FormattedInputCurrency extends React.PureComponent {
     value: '',
     inputProps: undefined,
     className: '',
+    onBlur: () => {},
   };
 
   /**
@@ -38,18 +40,40 @@ class FormattedInputCurrency extends React.PureComponent {
 
     if (val === undefined || val === null || val === '') return '';
 
-    return formatCurrencyAmount(val, {
+    const value = formatCurrencyAmount(val, {
       currency, decimals, thousandSeparator, decimalSeparator,
     });
+    return Number.isNaN(value) ? val : value;
   };
+
+  editFormatter = (val) => {
+    const { thousandSeparator, decimalSeparator } = this.props;
+
+    if (val === undefined || val === null || val === '') return '';
+    // - or + are not formatted
+    if (val.length <= 1) return val;
+
+    const decimalSeparatorIndex = val.lastIndexOf(decimalSeparator);
+    const decimals = decimalSeparatorIndex > -1
+      ? val.length - decimalSeparatorIndex - 1
+      : 0;
+
+    const value = formatCurrencyAmount(val, { decimals, thousandSeparator, decimalSeparator });
+
+    if (decimalSeparatorIndex > -1 && decimals === 0) return `${value}${decimalSeparator}`;
+
+    return value;
+  }
 
   render() {
     const {
-      onChange, value, inputProps, className,
+      onBlur, onChange, value, inputProps, className,
     } = this.props;
     return (
       <FormattedInput
+        onBlur={onBlur}
         onChange={onChange}
+        editFormatter={this.editFormatter}
         formatter={this.formatter}
         className={className}
         value={value}

@@ -3,6 +3,8 @@
 * In general follow (https://docs.npmjs.com/getting-started/semantic-versioning) versioning.
 
 ## <next>
+* Added `onBlur` prop for both `FormattedInput` and `FormattedInputCurrency`
+* Added `editFormatter` prop for `FormattedInput`
 
 ## 1.1.4
 * Bumped `@opuscapita/format-utils` version number to 2.1.2
