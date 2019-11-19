@@ -3,6 +3,8 @@
 * In general follow (https://docs.npmjs.com/getting-started/semantic-versioning) versioning.
 
 ## <next>
+
+## 1.2.1
 * Upgraded `@opuscapita/format-utils` version
 * Fixed currency `editFormatter`, invalid input is changed to 0
 
