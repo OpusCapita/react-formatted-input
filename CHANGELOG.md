@@ -3,6 +3,8 @@
 * In general follow (https://docs.npmjs.com/getting-started/semantic-versioning) versioning.
 
 ## <next>
+
+## 1.2.2
 * Fixed `FormattedInputCurrency` invalid input is changed to 0 on blur
 
 ## 1.2.1
