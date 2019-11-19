@@ -3,6 +3,8 @@
 * In general follow (https://docs.npmjs.com/getting-started/semantic-versioning) versioning.
 
 ## <next>
+* Upgraded `@opuscapita/format-utils` version
+* Fixed currency `editFormatter`, invalid input is changed to 0
 
 ## 1.2.0
 * Added `onBlur` prop for both `FormattedInput` and `FormattedInputCurrency`
