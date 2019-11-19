@@ -60,6 +60,10 @@ class FormattedInputCurrency extends React.PureComponent {
 
     const value = formatCurrencyAmount(val, { decimals, thousandSeparator, decimalSeparator });
 
+    if (Number.isNaN(value)) {
+      return formatCurrencyAmount(0, { decimals, thousandSeparator, decimalSeparator });
+    }
+
     if (decimalSeparatorIndex > -1 && decimals === 0) return `${value}${decimalSeparator}`;
 
     return value;
