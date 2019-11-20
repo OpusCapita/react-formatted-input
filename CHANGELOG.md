@@ -3,6 +3,8 @@
 * In general follow (https://docs.npmjs.com/getting-started/semantic-versioning) versioning.
 
 ## <next>
+
+## 1.2.3
 * `FormattedInput` `onBlur` returns typed value instead of formatted value
 
 ## 1.2.2
