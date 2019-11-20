@@ -3,6 +3,7 @@
 * In general follow (https://docs.npmjs.com/getting-started/semantic-versioning) versioning.
 
 ## <next>
+* `FormattedInput` `onBlur` returns typed value instead of formatted value
 
 ## 1.2.2
 * Fixed `FormattedInputCurrency` invalid input is changed to 0 on blur

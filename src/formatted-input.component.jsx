@@ -56,7 +56,7 @@ class FormattedInput extends React.PureComponent {
 
     this.setState({ value }, () => {
       userTyping = false;
-      onBlur(value);
+      onBlur(val);
     });
   };
 
