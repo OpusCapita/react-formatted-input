@@ -1,7 +1,7 @@
 {
   "author": "OpusCapita (www.opuscapita.com)",
   "name": "@opuscapita/react-formatted-input",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "private": false,
   "license": "MIT",
   "description": "OpusCapita - React Formatted Input",
