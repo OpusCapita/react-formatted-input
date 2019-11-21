@@ -3,6 +3,7 @@
 * In general follow (https://docs.npmjs.com/getting-started/semantic-versioning) versioning.
 
 ## <next>
+* `FormattedInputCurrency`: if keyboard locale differs from application locale, and therefore also decimal point in number pad differs from `decimalSeparator` prop, the typed decimal separator is replaced with `decimalSeparator` prop value
 
 ## 1.2.3
 * `FormattedInput` `onBlur` returns typed value instead of formatted value
