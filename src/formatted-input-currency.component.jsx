@@ -30,7 +30,9 @@ class FormattedInputCurrency extends React.PureComponent {
 
   constructor() {
     super();
-    this.state = {};
+    this.state = {
+      decimalPointIndex: undefined,
+    };
   }
 
   /**
