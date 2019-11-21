@@ -14,7 +14,7 @@ const FormattedInputCurrencyStory = () => {
     currency: select('Currency', currencyOpts, 'EUR'),
     value: number('Initial value', '100'),
     decimals: number('Decimals', undefined),
-    thousandSeparator: text('Thousand separator', undefined),
+    thousandSeparator: text('Thousand separator', ','),
     decimalSeparator: text('Decimal separator', '.'),
   };
 

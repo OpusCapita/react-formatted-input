@@ -28,6 +28,11 @@ class FormattedInputCurrency extends React.PureComponent {
     onBlur: () => {},
   };
 
+  constructor() {
+    super();
+    this.state = {};
+  }
+
   /**
    * Formats the value with @opuscapita/format-utils formatCurrencyAmount function
    * @param val
@@ -51,17 +56,28 @@ class FormattedInputCurrency extends React.PureComponent {
 
   editFormatter = (val) => {
     const { thousandSeparator, decimalSeparator } = this.props;
+    const { decimalPointIndex } = this.state;
 
-    if (val === undefined || val === null || val === '') return '';
+    let value = val;
+
+    if (value === undefined || value === null || value === '') return '';
+
     // - or + are not formatted
-    if (val.length <= 1) return val;
+    if (value.length <= 1) return value;
 
-    const decimalSeparatorIndex = val.lastIndexOf(decimalSeparator);
+    if (decimalPointIndex !== undefined) {
+      const separator = value.charAt(decimalPointIndex);
+      if (value.charAt(decimalPointIndex) !== decimalSeparator) {
+        value = `${value.slice(0, decimalPointIndex)}${value.slice(decimalPointIndex).replace(separator, decimalSeparator)}`;
+      }
+    }
+
+    const decimalSeparatorIndex = value.lastIndexOf(decimalSeparator);
     const decimals = decimalSeparatorIndex > -1
-      ? val.length - decimalSeparatorIndex - 1
+      ? value.length - decimalSeparatorIndex - 1
       : 0;
 
-    const value = formatCurrencyAmount(val, { decimals, thousandSeparator, decimalSeparator });
+    value = formatCurrencyAmount(value, { decimals, thousandSeparator, decimalSeparator });
 
     if (Number.isNaN(value)) {
       return formatCurrencyAmount(0, { decimals, thousandSeparator, decimalSeparator });
@@ -70,6 +86,11 @@ class FormattedInputCurrency extends React.PureComponent {
     if (decimalSeparatorIndex > -1 && decimals === 0) return `${value}${decimalSeparator}`;
 
     return value;
+  }
+
+  handleKeyDown = (e) => {
+    const { keyCode, target: { selectionStart } } = e;
+    this.setState({ decimalPointIndex: keyCode === 110 ? selectionStart : undefined });
   }
 
   render() {
@@ -84,7 +105,7 @@ class FormattedInputCurrency extends React.PureComponent {
         formatter={this.formatter}
         className={className}
         value={value}
-        inputProps={inputProps}
+        inputProps={{ ...inputProps, onKeyDown: this.handleKeyDown }}
       />
     );
   }
