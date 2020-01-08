@@ -27,22 +27,25 @@ Also you need to configure sass loader, since all the styles are in sass format.
 * Add [SASS loader](https://github.com/webpack-contrib/sass-loader) to support importing of SASS styles.
 
 ### FormattedInput API
-| Prop name                | Type             | Default                                  | Description                                               |
-| ------------------------ | ---------------- | ---------------------------------------- | --------------------------------------------------------- |
-| onChange                 | func             | Required                                 | Called upon change                                        |
-| formatter                | func             | Noop function                            | Function that formats the value                           |
-| inputProps               | object           |                                          | Collection of props that are be passed to the input field |
-| value                    | text, number     |                                          | Input value                                               |
+| Prop name     | Type         | Default       | Description                                               |
+| ------------- | ------------ | ------------- | --------------------------------------------------------- |
+| onChange      | func         | Required      | Called upon change                                        |
+| onBlur        | func         | Noop function | Called upon blur                                          |
+| formatter     | func         | Noop function | Function that formats the value on blur                   |
+| editFormatter | func         | Noop function | Function that formats the value on change                 |
+| inputProps    | object       |               | Collection of props that are be passed to the input field |
+| value         | text, number |               | Input value                                               |
 
 
 ### FormattedInputCurrency API
-| Prop name                | Type             | Default                                  | Description                                               |
-| ------------------------ | ---------------- | ---------------------------------------- | --------------------------------------------------------- |
-| onChange                 | func             | Required                                 | Called upon change                                        |
-| currency                 | string           | undefined                                | Currency code to get number of decimals from              |
-| decimals                 | string           | undefined                                | Number of decimals, overrides currency decimals           |
-| thousandSeparator        | string           | undefined                                | Thousand separator                                        |
-| decimalSeparator         | string           | "."                                      | Decimal separator                                         |
+| Prop name         | Type   | Default       | Description                                     |
+| ----------------- | ------ | ------------- | ----------------------------------------------- |
+| onChange          | func   | Required      | Called upon change                              |
+| onBlur            | func   | Noop function | Called upon blur                                |
+| currency          | string | undefined     | Currency code to get number of decimals from    |
+| decimals          | string | undefined     | Number of decimals, overrides currency decimals |
+| thousandSeparator | string | undefined     | Thousand separator                              |
+| decimalSeparator  | string | "."           | Decimal separator                               |
 
 ### Code example
 ```jsx
@@ -50,12 +53,12 @@ import React from 'react';
 import FormattedInput, { FormatInputCurrency } from '@opuscapita/react-formatted-input';
 
 export default class ReactView extends React.Component {
-  formatter = (value) => `formatted-${value}`; 
+  formatter = (value) => `formatted-${value}`;
 
   render() {
     return (
       <React.Fragment>
-      <FormattedInput 
+      <FormattedInput
         onChange="..."
         formatter={this.formatter}
       />

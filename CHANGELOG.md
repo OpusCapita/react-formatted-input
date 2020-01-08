@@ -4,10 +4,24 @@
 
 ## <next>
 
-## 1.1.5
+## 1.2.4
 * Bumped `@opuscapita/format-utils` version number to 2.2.3
 * Removed not needed dependencies
 * Added moment as peerDependency since it's needed by @opuscapita/format-utils
+
+## 1.2.3
+* `FormattedInput` `onBlur` returns typed value instead of formatted value
+
+## 1.2.2
+* Fixed `FormattedInputCurrency` invalid input is changed to 0 on blur
+
+## 1.2.1
+* Upgraded `@opuscapita/format-utils` version
+* Fixed currency `editFormatter`, invalid input is changed to 0
+
+## 1.2.0
+* Added `onBlur` prop for both `FormattedInput` and `FormattedInputCurrency`
+* Added `editFormatter` prop for `FormattedInput`
 
 ## 1.1.4
 * Bumped `@opuscapita/format-utils` version number to 2.1.2

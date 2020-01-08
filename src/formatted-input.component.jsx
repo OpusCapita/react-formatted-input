@@ -9,17 +9,21 @@ let userTyping = false;
 class FormattedInput extends React.PureComponent {
   static propTypes = {
     formatter: PropTypes.func,
+    onBlur: PropTypes.func,
     onChange: PropTypes.func.isRequired,
     inputProps: PropTypes.shape({}),
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     className: PropTypes.string,
+    editFormatter: PropTypes.func,
   };
 
   static defaultProps = {
     formatter: val => val,
+    onBlur: () => {},
     inputProps: {},
     value: '',
     className: '',
+    editFormatter: val => val,
   };
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -45,12 +49,14 @@ class FormattedInput extends React.PureComponent {
    * @param e
    */
   onBlur = (e) => {
-    const { formatter, onChange } = this.props;
-    const { target: { value } } = e;
+    const { formatter, onBlur } = this.props;
+    const { target: { value: val } } = e;
 
-    this.setState({ value: formatter(value) }, () => {
-      onChange(formatter(value));
+    const value = formatter(val);
+
+    this.setState({ value }, () => {
       userTyping = false;
+      onBlur(val);
     });
   };
 
@@ -60,11 +66,11 @@ class FormattedInput extends React.PureComponent {
    * @param e
    */
   onChange = (e) => {
-    const { onChange } = this.props;
+    const { editFormatter, onChange } = this.props;
     const { target: { value } } = e;
     userTyping = true;
 
-    this.setState({ value }, () => {
+    this.setState({ value: editFormatter(value) }, () => {
       onChange(value);
     });
   };
