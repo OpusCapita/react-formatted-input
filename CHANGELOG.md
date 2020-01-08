@@ -4,6 +4,11 @@
 
 ## <next>
 
+## 1.1.5
+* Bumped `@opuscapita/format-utils` version number to 2.2.3
+* Removed not needed dependencies
+* Added moment as peerDependency since it's needed by @opuscapita/format-utils
+
 ## 1.1.4
 * Bumped `@opuscapita/format-utils` version number to 2.1.2
 
