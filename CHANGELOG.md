@@ -4,6 +4,9 @@
 
 ## <next>
 
+## 1.2.5
+* Global shared userTyping variable removed and replaced by state variable. Global shared variable prevented programmatic updates to input values when using multiple inputs in same component (e.g. in react-grid)
+
 ## 1.2.4
 * Bumped `@opuscapita/format-utils` version number to 2.2.3
 * Removed not needed dependencies
