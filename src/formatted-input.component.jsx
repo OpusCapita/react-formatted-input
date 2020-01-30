@@ -4,8 +4,6 @@ import PropTypes from 'prop-types';
 // App imports
 import './formatted-input.scss';
 
-let userTyping = false;
-
 class FormattedInput extends React.PureComponent {
   static propTypes = {
     formatter: PropTypes.func,
@@ -28,12 +26,13 @@ class FormattedInput extends React.PureComponent {
 
   static getDerivedStateFromProps(nextProps, prevState) {
     const { formatter, value: nextValue } = nextProps;
-    const { value: prevStateValue } = prevState;
+    const { prevPropsValue } = prevState;
 
     // Format value if change is not initiated by a user and previous state value differs
     // from the formatted value
-    if (!userTyping && prevStateValue !== formatter(nextValue)) {
-      return { value: formatter(nextValue) };
+    if (!prevState.userTyping && prevPropsValue !== formatter(nextValue)) {
+      const formattedValue = formatter(nextValue);
+      return { value: formattedValue, prevPropsValue: formattedValue };
     }
     return null;
   }
@@ -41,7 +40,11 @@ class FormattedInput extends React.PureComponent {
   constructor(props) {
     super(props);
     const { value, formatter } = props;
-    this.state = { value: formatter(value) };
+    this.state = {
+      value: formatter(value),
+      prevPropsValue: null,
+      userTyping: false,
+    };
   }
 
   /**
@@ -55,10 +58,11 @@ class FormattedInput extends React.PureComponent {
     const value = formatter(val);
 
     this.setState({ value }, () => {
-      userTyping = false;
       onBlur(val);
+      this.setState(() => ({ userTyping: false }));
     });
   };
+
 
   /**
    * Called when input value changes. "userTyping" helps getDerivedStateFromProps
@@ -68,9 +72,8 @@ class FormattedInput extends React.PureComponent {
   onChange = (e) => {
     const { editFormatter, onChange } = this.props;
     const { target: { value } } = e;
-    userTyping = true;
 
-    this.setState({ value: editFormatter(value) }, () => {
+    this.setState({ value: editFormatter(value), userTyping: true }, () => {
       onChange(value);
     });
   };
