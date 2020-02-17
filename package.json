@@ -98,7 +98,7 @@
     "webpack-merge": "4.2.2"
   },
   "dependencies": {
-    "@opuscapita/format-utils": "2.2.3"
+    "@opuscapita/format-utils": "2.2.4"
   },
   "repository": {
     "type": "git",
