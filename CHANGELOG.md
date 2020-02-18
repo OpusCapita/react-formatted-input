@@ -3,6 +3,8 @@
 * In general follow (https://docs.npmjs.com/getting-started/semantic-versioning) versioning.
 
 ## <next>
+
+## 1.2.6
 * Upgraded ` @opuscapita/format-utils@2.2.4`
 * Enhanced `FormattedInputCurrency`: prevented minus sign removal on change in case of 0.00 --> -0.00 (--> -10.00)
 
