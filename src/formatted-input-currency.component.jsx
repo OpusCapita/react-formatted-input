@@ -28,19 +28,37 @@ class FormattedInputCurrency extends React.PureComponent {
     onBlur: () => {},
   };
 
+  unformatInput = (val) => {
+    const {
+      thousandSeparator, decimalSeparator,
+    } = this.props;
+
+    if (typeof val === 'number') return val;
+
+    let value = val;
+    if (thousandSeparator) {
+      value = value.replace(new RegExp(`\\${thousandSeparator}`, 'g'), '');
+    }
+    if (decimalSeparator !== '.') {
+      value = value.replace(new RegExp(`\\${decimalSeparator}`, 'g'), '.');
+    }
+
+    return value;
+  }
+
   /**
    * Formats the value with @opuscapita/format-utils formatCurrencyAmount function
    * @param val
    * @returns {*}
    */
-  formatter = (val) => {
+  formatter = (val, unformat = false) => {
     const {
       currency, decimals, thousandSeparator, decimalSeparator,
     } = this.props;
 
     if (val === undefined || val === null || val === '') return '';
 
-    const value = formatCurrencyAmount(val, {
+    const value = formatCurrencyAmount(unformat ? this.unformatInput(val) : val, {
       currency, decimals, thousandSeparator, decimalSeparator,
     });
 
@@ -61,15 +79,7 @@ class FormattedInputCurrency extends React.PureComponent {
       ? val.length - decimalSeparatorIndex - 1
       : 0;
 
-    let value = val;
-    // formatCurrencyAmount input must be either number or number string
-    if (thousandSeparator) {
-      value = val.replace(new RegExp(`\\${thousandSeparator}`, 'g'), '');
-    }
-    if (decimalSeparator !== '.') {
-      value = val.replace(new RegExp(`\\${decimalSeparator}`, 'g'), '.');
-    }
-    value = formatCurrencyAmount(value, { decimals, thousandSeparator, decimalSeparator });
+    const value = formatCurrencyAmount(this.unformatInput(val), { decimals, thousandSeparator, decimalSeparator });
 
     // this avoids minus sign removal in the editing phase like this: 0.00 --> -0.00 --> -10.00
     if (val === `-${value}`) return val;

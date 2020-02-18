@@ -3,7 +3,8 @@
 * In general follow (https://docs.npmjs.com/getting-started/semantic-versioning) versioning.
 
 ## <next>
-* Upgraded ` @opuscapita/format-utils@2.2.5` and unformatted input before calling `formatCurrencyAmount`
+* `FormattedInputCurrency`: on blur and on change input value is formatted and therefore it is needed to be unformatted before `formatCurrencyAmount`
+* Upgraded `@opuscapita/format-utils@2.2.5`
 
 ## 1.2.6
 * Upgraded ` @opuscapita/format-utils@2.2.4`
