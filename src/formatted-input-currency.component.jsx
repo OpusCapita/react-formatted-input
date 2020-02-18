@@ -79,7 +79,9 @@ class FormattedInputCurrency extends React.PureComponent {
       ? val.length - decimalSeparatorIndex - 1
       : 0;
 
-    const value = formatCurrencyAmount(this.unformatInput(val), { decimals, thousandSeparator, decimalSeparator });
+    const value = formatCurrencyAmount(this.unformatInput(val), {
+      decimals, thousandSeparator, decimalSeparator,
+    });
 
     // this avoids minus sign removal in the editing phase like this: 0.00 --> -0.00 --> -10.00
     if (val === `-${value}`) return val;
