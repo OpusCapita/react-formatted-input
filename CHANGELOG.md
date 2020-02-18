@@ -3,6 +3,7 @@
 * In general follow (https://docs.npmjs.com/getting-started/semantic-versioning) versioning.
 
 ## <next>
+* Upgraded ` @opuscapita/format-utils@2.2.5` and unformatted input before calling `formatCurrencyAmount`
 
 ## 1.2.6
 * Upgraded ` @opuscapita/format-utils@2.2.4`
