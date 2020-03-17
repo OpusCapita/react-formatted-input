@@ -3,6 +3,8 @@
 * In general follow (https://docs.npmjs.com/getting-started/semantic-versioning) versioning.
 
 ## <next>
+
+## 1.3.0
 * `FormattedInputCurrency`: added `selectValueOnClick` prop to enable input value to be selected on click
 
 ## 1.2.7
