@@ -16,6 +16,7 @@ class FormattedInputCurrency extends React.PureComponent {
     inputProps: PropTypes.shape({}),
     className: PropTypes.string,
     onBlur: PropTypes.func,
+    selectValueOnClick: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -26,7 +27,12 @@ class FormattedInputCurrency extends React.PureComponent {
     inputProps: undefined,
     className: '',
     onBlur: () => {},
+    selectValueOnClick: false,
   };
+
+  componentWillUnmount = () => {
+    clearTimeout(this.timeout);
+  }
 
   unformatInput = (val) => {
     const {
@@ -95,6 +101,19 @@ class FormattedInputCurrency extends React.PureComponent {
     return value;
   }
 
+  handleMouseDown = (e) => {
+    const { selectValueOnClick } = this.props;
+    const { currentTarget, currentTarget: { value } } = e;
+    if (document.activeElement !== currentTarget
+      && selectValueOnClick
+      && value !== undefined
+      && value !== null) {
+      this.timeout = setTimeout(() => {
+        currentTarget.setSelectionRange(0, value.length);
+      }, 10);
+    }
+  }
+
   render() {
     const {
       onBlur, onChange, value, inputProps, className,
@@ -103,6 +122,7 @@ class FormattedInputCurrency extends React.PureComponent {
       <FormattedInput
         onBlur={onBlur}
         onChange={onChange}
+        onMouseDown={this.handleMouseDown}
         editFormatter={this.editFormatter}
         formatter={this.formatter}
         className={className}

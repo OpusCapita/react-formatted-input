@@ -31,6 +31,7 @@ Also you need to configure sass loader, since all the styles are in sass format.
 | ------------- | ------------ | ------------- | --------------------------------------------------------- |
 | onChange      | func         | Required      | Called upon change                                        |
 | onBlur        | func         | Noop function | Called upon blur                                          |
+| onMouseDown   | func         | Noop function | Called upon mouse down                                    |
 | formatter     | func         | Noop function | Function that formats the value on blur                   |
 | editFormatter | func         | Noop function | Function that formats the value on change                 |
 | inputProps    | object       |               | Collection of props that are be passed to the input field |
@@ -38,14 +39,15 @@ Also you need to configure sass loader, since all the styles are in sass format.
 
 
 ### FormattedInputCurrency API
-| Prop name         | Type   | Default       | Description                                     |
-| ----------------- | ------ | ------------- | ----------------------------------------------- |
-| onChange          | func   | Required      | Called upon change                              |
-| onBlur            | func   | Noop function | Called upon blur                                |
-| currency          | string | undefined     | Currency code to get number of decimals from    |
-| decimals          | string | undefined     | Number of decimals, overrides currency decimals |
-| thousandSeparator | string | undefined     | Thousand separator                              |
-| decimalSeparator  | string | "."           | Decimal separator                               |
+| Prop name          | Type   | Default       | Description                                     |
+| ------------------ | ------ | ------------- | ----------------------------------------------- |
+| onChange           | func   | Required      | Called upon change                              |
+| onBlur             | func   | Noop function | Called upon blur                                |
+| currency           | string | undefined     | Currency code to get number of decimals from    |
+| decimals           | string | undefined     | Number of decimals, overrides currency decimals |
+| thousandSeparator  | string | undefined     | Thousand separator                              |
+| decimalSeparator   | string | "."           | Decimal separator                               |
+| selectValueOnClick | bool   | false         | If true, input value is selected on click       |
 
 ### Code example
 ```jsx
