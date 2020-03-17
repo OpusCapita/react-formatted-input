@@ -3,6 +3,7 @@
 * In general follow (https://docs.npmjs.com/getting-started/semantic-versioning) versioning.
 
 ## <next>
+* `FormattedInputCurrency`: added `selectValueOnClick` prop to enable input value to be selected on click
 
 ## 1.2.7
 * `FormattedInputCurrency`: on blur and on change input value is formatted and therefore it is needed to be unformatted before `formatCurrencyAmount`

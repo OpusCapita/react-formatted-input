@@ -9,6 +9,7 @@ class FormattedInput extends React.PureComponent {
     formatter: PropTypes.func,
     onBlur: PropTypes.func,
     onChange: PropTypes.func.isRequired,
+    onMouseDown: PropTypes.func,
     inputProps: PropTypes.shape({}),
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     className: PropTypes.string,
@@ -18,6 +19,7 @@ class FormattedInput extends React.PureComponent {
   static defaultProps = {
     formatter: val => val,
     onBlur: () => {},
+    onMouseDown: () => {},
     inputProps: {},
     value: '',
     className: '',
@@ -79,13 +81,14 @@ class FormattedInput extends React.PureComponent {
   };
 
   render() {
-    const { inputProps, className } = this.props;
+    const { inputProps, className, onMouseDown } = this.props;
     return (
       <input
         {...inputProps}
         className={`oc-formatted-input ${className}`}
         onChange={this.onChange}
         onBlur={this.onBlur}
+        onMouseDown={onMouseDown}
         value={this.state.value}
       />
     );
