@@ -64,8 +64,17 @@ class FormattedInputCurrency extends React.PureComponent {
 
     if (val === undefined || val === null || val === '') return '';
 
-    const value = formatCurrencyAmount(unformat ? this.unformatInput(val) : val, {
-      currency, decimals, thousandSeparator, decimalSeparator,
+    let allDecimals;
+    const unformattedValue = unformat ? this.unformatInput(val) : val;
+
+    // if no currency or decimals, then the number is not rounded to the certain amount of decimals
+    if (!currency && (decimals === undefined || decimals === null)) {
+      const separator = '.';
+      const fraction = unformattedValue.toString().split(separator)[1];
+      allDecimals = (fraction && fraction.length) || 0;
+    }
+    const value = formatCurrencyAmount(unformattedValue, {
+      currency, decimals: allDecimals || decimals || 0, thousandSeparator, decimalSeparator,
     });
 
     return Number.isNaN(value)
