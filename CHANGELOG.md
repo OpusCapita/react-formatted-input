@@ -3,6 +3,8 @@
 * In general follow (https://docs.npmjs.com/getting-started/semantic-versioning) versioning.
 
 ## <next>
+
+## 1.3.1
 * `FormattedInputCurrency`: if no currency or decimals, then the number is not rounded to the certain amount of decimals
 
 ## 1.3.0
