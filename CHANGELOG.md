@@ -3,6 +3,7 @@
 * In general follow (https://docs.npmjs.com/getting-started/semantic-versioning) versioning.
 
 ## <next>
+* `FormattedInputCurrency`: if no currency or decimals, then the number is not rounded to the certain amount of decimals
 
 ## 1.3.0
 * `FormattedInputCurrency`: added `selectValueOnClick` prop to enable input value to be selected on click
