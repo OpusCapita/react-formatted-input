@@ -74,7 +74,7 @@ class FormattedInputCurrency extends React.PureComponent {
       allDecimals = (fraction && fraction.length) || 0;
     }
     const value = formatCurrencyAmount(unformattedValue, {
-      currency, decimals: allDecimals || decimals, thousandSeparator, decimalSeparator,
+      currency, decimals: allDecimals || decimals || 0, thousandSeparator, decimalSeparator,
     });
 
     return Number.isNaN(value)
